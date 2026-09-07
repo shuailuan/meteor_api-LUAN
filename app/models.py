@@ -3,35 +3,39 @@ from datetime import datetime
 from typing import List, Optional
 
 import humps
-from pydantic import BaseModel, Field
-
-
-class CamelConfig:
-    alias_generator = humps.camelize  # type: ignore
-    allow_population_by_field_name = True
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class Wind(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     speed_kts: float
     direction_degrees: float
     cardinal_str: str
 
-    class Config(CamelConfig):
-        ...
-
 
 class CurrentWeather(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     outside_temp: float
     inside_temp: float
     pressure_MBar: float
     rain_rate: float
     wind: Wind
 
-    class Config(CamelConfig):
-        ...
-
 
 class IsoImageData(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     description: str
     issued_time: str
     issued_time_ISO: datetime
@@ -41,18 +45,22 @@ class IsoImageData(BaseModel):
     valid_from_time_ISO: datetime
     valid_from_time_segment: str
 
-    class Config(CamelConfig):
-        ...
-
 
 class IsobaricMaps(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     image_data: List[IsoImageData]
-
-    class Config(CamelConfig):
-        ...
 
 
 class RainImageData(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     date_time_ISO: datetime
     long_date_time: str
     short_date_time: str
@@ -61,28 +69,32 @@ class RainImageData(BaseModel):
     valid_from_ISO: datetime
     valid_from_raw: int
 
-    class Config(CamelConfig):
-        ...
-
 
 class RainMaps(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     image_data: List[RainImageData]
-
-    class Config(CamelConfig):
-        ...
 
 
 class CelestialData(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     day: str
     day_ISO: datetime
     first_light: str
     first_light_ISO: datetime
     last_light: str
     last_light_ISO: datetime
-    moon_rise: Optional[str]
-    moon_rise_ISO: Optional[datetime]
-    moon_set: Optional[str]
-    moon_set_ISO: Optional[datetime]
+    moon_rise: Optional[str] = None
+    moon_rise_ISO: Optional[datetime] = None
+    moon_set: Optional[str] = None
+    moon_set_ISO: Optional[datetime] = None
     sun_rise: str
     sun_rise_hour: int
     sun_rise_ISO: datetime
@@ -90,11 +102,13 @@ class CelestialData(BaseModel):
     sun_set_hour: int
     sun_set_ISO: datetime
 
-    class Config(CamelConfig):
-        ...
-
 
 class ForecastDayData(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     date: str
     date_ISO: datetime
     dow: str
@@ -107,15 +121,14 @@ class ForecastDayData(BaseModel):
     min: int
     rise_set: CelestialData
 
-    class Config(CamelConfig):
-        ...
-
 
 class Forecast(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=humps.camelize,
+        populate_by_name=True
+    )
+    
     days: List[ForecastDayData]
-
-    class Config(CamelConfig):
-        ...
 
 
 # LEGACY MODELS #

@@ -164,61 +164,73 @@ docker run -p 8001:8001 \
 
 ## Valid Cities
 
-- auckland-central
+All cities tested and verified with MetService API (42 cities):
 
-- wellington-city
-
-- kapiti
-
+### Northland
+- kaitaia
 - kerikeri
-
+- paihia
+- russell
 - whangarei
-
 - dargaville
 
-- paihia
+### Auckland & Waikato
+- auckland
+- hamilton
+- whitianga
+- thames
 
-- whitianga thames tauranga
-
+### Bay of Plenty & Rotorua
+- tauranga
+- rotorua
 - whakatane
+- taupo
 
+### East Coast
 - gisborne
-
 - napier
-
 - hastings
 
+### Taranaki & Central North Island
 - new-plymouth
-
+- taumarunui
 - wanganui
+- palmerston-north
 
+### Wairarapa & Wellington
+- masterton
 - levin
-
 - paraparaumu
+- wellington
 
+### Nelson & Marlborough
+- blenheim
+- nelson
 - motueka
 
-- nelson
-
+### West Coast
 - westport
-
 - reefton
-
 - greymouth
-
 - hokitika
 
+### Canterbury
+- kaikoura
 - christchurch
-
+- ashburton
 - timaru
 
+### Otago
 - oamaru
-
 - dunedin
+- queenstown
+- wanaka
 
+### Southland
 - invercargill
-
 - milford-sound
+
+**Note:** City identifiers are case-sensitive and use lowercase with hyphens.
 
 ## Valid Radar Locations
 

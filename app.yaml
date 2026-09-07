@@ -1,0 +1,15 @@
+command:
+  - uvicorn
+  - app.__main__:app
+  - --host
+  - 0.0.0.0
+  - --port
+  - "$DATABRICKS_APP_PORT"
+
+env:
+  - name: CITY
+    value: christchurch
+  - name: RADAR_LOCATION
+    value: christchurch
+  - name: WX_STATION_URL
+    value: "https://your-weather-station-url/rss"
